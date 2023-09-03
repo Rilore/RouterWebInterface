@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+        <title>WB-2P-LR5 Station Settings</title>
+    </head>
+    <body onload="parseFormDataFromRaw()">
+        <div class="station-settings">
+            <form action="raw.html" method="GET">
+                <h3><b>Settings</b></h3>
+                <div class="labelContainer">
+                    <label for="SSID">SSID</label>
+                </div>
+                <div>
+                    <input
+                        class="form-control item"
+                        type="text"
+                        name="SSID"
+                        id="SSID"
+                        placeholder="MyNetwork325"
+                        required />
+                </div>
+                <div class="labelContainer">
+                    <label for="ChannelBonding">Ширина канала</label>
+                </div>
+                <div>
+                    <select
+                        class="form-control ChannelBondingStyle"
+                        name="ChannelBonding"
+                        id="ChannelBonding"
+                        onclick="showExtendedChannel()"
+                        required>
+                        <option class="defaultOptionStyle" value="">
+                            --Пожалуйста, выберите--
+                        </option>
+                        <option value="5" onclick="showChannelLimit()">
+                            5 МГц
+                        </option>
+                        <option value="10" onclick="showChannelLimit()">
+                            10 МГц
+                        </option>
+                        <option value="20" onclick="showChannelLimit()">
+                            20 МГц
+                        </option>
+                        <option value="40" onclick="showChannelLimit()">
+                            40 МГц
+                        </option>
+                        <option value="80" onclick="showChannelLimit()">
+                            80 МГц
+                        </option>
+                    </select>
+                </div>
+                <div class="labelContainer">
+                    <label for="WPAKey">Пароль Wi-Fi</label>
+                </div>
+                <div>
+                    <input
+                        class="form-control item"
+                        type="text"
+                        name="WPAKey"
+                        id="WPAKey"
+                        pattern="\w{8,63}"
+                        placeholder="12345678"
+                        required />
+                </div>
+                <div class="labelContainer">
+                    <label for="ExtendedChannel" id="ExtendedChannelLabel"
+                        >Расширенные каналы</label
+                    >
+                </div>
+                <div>
+                    <label class="switch" id="ExtendedChannelSwitch">
+                        <input
+                            type="checkbox"
+                            id="ExtendedChannel"
+                            onclick="showChannelLimit(), updateExtendedChannelState()" />
+                        <span class="slider round"></span>
+                    </label>
+                    <input
+                        type="hidden"
+                        id="ExtendedChannelState"
+                        name="ExtendedChannelState"
+                        value="false" />
+                </div>
+                <div class="labelContainer">
+                    <label for="UseChannelLimit"
+                        >Использование списка разрешённых каналов
+                    </label>
+                </div>
+                <div>
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            id="UseChannelLimit"
+                            onclick="updateUseChannelLimitState()" />
+                        <span class="slider round"></span>
+                    </label>
+                    <input
+                        type="hidden"
+                        id="UseChannelLimitState"
+                        name="UseChannelLimitState"
+                        value="false" />
+                </div>
+                <div class="labelContainer">
+                    <label
+                        for="ChannelLimit"
+                        id="ChannelLimitLabel"
+                        style="display: none"
+                        >Список разрешённых каналов
+                    </label>
+                </div>
+                <div
+                    class="ChannelCheckboxGroup"
+                    id="ChannelCheckboxGroup"></div>
+                <div class="form-group">
+                    <button class="btn accept-settings" type="submit">
+                        Применить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
