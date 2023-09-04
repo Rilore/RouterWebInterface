@@ -28,13 +28,16 @@ window.showChannelLimit = async function () {
     removeRangeButtons()
     let UseChannelLimit = document.getElementById('UseChannelLimit')
     let ChannelLimitLabel = document.getElementById('ChannelLimitLabel')
+    let SelectAllChannelLabel = document.getElementById('SelectAllChannelLabel')
 
     if (UseChannelLimit.checked == true) {
         addRangeButtons()
         ChannelLimitLabel.style.display = 'inline'
+        SelectAllChannelLabel.style.display = 'inline'
     } else {
         removeRangeButtons()
         ChannelLimitLabel.style.display = 'none'
+        SelectAllChannelLabel.style.display = 'none'
     }
 }
 
@@ -47,6 +50,7 @@ window.updateUseChannelLimitState = async function () {
         window.showChannelLimit()
     } else {
         UseChannelLimitState.value = 'false'
+        window.showChannelLimit()
     }
 }
 
@@ -121,8 +125,9 @@ window.showExtendedChannel = async function () {
 
 function addButtonsForRange(range) {
     let ChannelCheckboxGroup = document.getElementById('ChannelCheckboxGroup')
-    let channelButtons = document.createElement('div')
+    let channelButtons = document.getElementById('ChannelButtons')
     channelButtons.id = 'ChannelButtons'
+    channelButtons.name = 'ChannelButtons'
     channelButtons.className = 'ChannelButtons'
     ChannelCheckboxGroup.appendChild(channelButtons)
 
@@ -181,9 +186,14 @@ window.parseFormDataFromRaw = async function () {
     window.updateUseChannelLimitState()
 
     let channelString = getContents('Channels')
-    let channels = channelString.split('+');
+    let channels = channelString.split('+')
     for (let i = 0; i < channels.length; ++i) {
-        document.getElementById('Channel' + channels[i]).checked = true
+        let channel = document.getElementById('Channel' + channels[i])
+        if (channel != null) {
+            channel.checked = true
+        } else {
+            return
+        }
     }
 }
 
@@ -238,6 +248,23 @@ function getChannels() {
         if (end == -1) {
             ChannelString += formData.slice(begin) + ' '
             return ChannelString
+        }
+    }
+}
+
+window.SelectAllChannels = async function () {
+    let channelButtons = document.getElementById('ChannelButtons')
+    let SelectAllChannelSwitch = document.getElementById(
+        'SelectAllChannelSwitch'
+    )
+
+    if (SelectAllChannelSwitch.checked && channelButtons.children.length != 0) {
+        for (const child of channelButtons.children) {
+            child.checked = true
+        }
+    } else {
+        for (const child of channelButtons.children) {
+            child.checked = false
         }
     }
 }

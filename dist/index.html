@@ -85,8 +85,7 @@
                 </div>
                 <div class="labelContainer">
                     <label for="UseChannelLimit"
-                        >Использование списка<br />
-                        разрешённых каналов
+                        >Использование списка разрешённых каналов
                     </label>
                 </div>
                 <div>
@@ -108,8 +107,21 @@
                         for="ChannelLimit"
                         id="ChannelLimitLabel"
                         style="display: none"
-                        >Список разрешённых<br />
-                        каналов
+                        >Список разрешённых каналов
+                    </label>
+                </div>
+                <div class="select-all-channels">
+                    <input
+                        type="checkbox"
+                        id="SelectAllChannelSwitch"
+                        name="SelectAllChannelSwitch"
+                        style="display: none"
+                        onclick="SelectAllChannels()" />
+                    <label
+                        for="SelectAllChannelSwitch"
+                        id="SelectAllChannelLabel"
+                        style="display: none"
+                        >Выделить все
                     </label>
                 </div>
                 <div

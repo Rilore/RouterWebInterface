@@ -69,6 +69,45 @@ h3 {
     margin-top: 20px;
 }
 
+.select-all-channels {
+    text-align: left;
+}
+
+.select-all-channels > label {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgb(175, 175, 175);
+    line-height: 50px;
+    transition: background-color 0.5s, top 0.1s;
+    margin: 0.5%;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    color: white;
+}
+
+.select-all-channels > input[type='checkbox'] {
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(175, 175, 175);
+    border: none;
+    color: white;
+    margin-top: 20px;
+    height: 0px;
+    width: 0px;
+    background: none;
+    display: none;
+}
+
+.select-all-channels > input[type='checkbox']:checked + label {
+    background-color: #2196f3;
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
