@@ -10,11 +10,11 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/webStation.html',
+            template: 'src/raw.html',
         }),
         new HtmlWebpackPlugin({
-            filename: 'raw.html',
-            template: 'src/raw.html',
+            template: './src/webStation.html',
+            filename: 'webStation.html',
         }),
     ],
     output: {

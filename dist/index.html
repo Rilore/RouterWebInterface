@@ -5,131 +5,61 @@
         <meta charset="utf-8" />
         <title>WB-2P-LR5 Station Settings</title>
     <script defer src="bundle.js"></script></head>
-    <body onload="parseFormDataFromRaw()">
+    <body onload="parseFormDataFromMain()">
         <div class="station-settings">
-            <form action="raw.html" method="GET">
-                <h3><b>Settings</b></h3>
+            <form action="webStation.html" method="GET">
                 <div class="labelContainer">
                     <label for="SSID">SSID</label>
                 </div>
                 <div>
-                    <input
-                        class="form-control item"
-                        type="text"
-                        name="SSID"
-                        id="SSID"
-                        placeholder="MyNetwork325"
-                        required />
+                    <input type="text" name="SSID" id="SSID" />
                 </div>
                 <div class="labelContainer">
-                    <label for="ChannelBonding">Ширина канала</label>
+                    <label for="ChannelBonding">ChannelBonding</label>
                 </div>
                 <div>
-                    <select
-                        class="form-control ChannelBondingStyle"
+                    <input
+                        type="text"
                         name="ChannelBonding"
-                        id="ChannelBonding"
-                        onclick="showExtendedChannel()"
-                        required>
-                        <option class="defaultOptionStyle" value="">
-                            --Пожалуйста, выберите--
-                        </option>
-                        <option value="5" onclick="showChannelLimit()">
-                            5 МГц
-                        </option>
-                        <option value="10" onclick="showChannelLimit()">
-                            10 МГц
-                        </option>
-                        <option value="20" onclick="showChannelLimit()">
-                            20 МГц
-                        </option>
-                        <option value="40" onclick="showChannelLimit()">
-                            40 МГц
-                        </option>
-                        <option value="80" onclick="showChannelLimit()">
-                            80 МГц
-                        </option>
-                    </select>
+                        id="ChannelBonding" />
                 </div>
                 <div class="labelContainer">
-                    <label for="WPAKey">Пароль Wi-Fi</label>
+                    <label for="WPAKey">WPAKey</label>
                 </div>
                 <div>
-                    <input
-                        class="form-control item"
-                        type="text"
-                        name="WPAKey"
-                        id="WPAKey"
-                        pattern="\w{8,63}"
-                        placeholder="12345678"
-                        required />
+                    <input type="text" name="WPAKey" id="WPAKey" />
                 </div>
                 <div class="labelContainer">
                     <label for="ExtendedChannel" id="ExtendedChannelLabel"
-                        >Расширенные каналы</label
+                        >ExtendedChannel</label
                     >
                 </div>
                 <div>
-                    <label class="switch" id="ExtendedChannelSwitch">
-                        <input
-                            type="checkbox"
-                            id="ExtendedChannel"
-                            onclick="showChannelLimit(), updateExtendedChannelState()" />
-                        <span class="slider round"></span>
-                    </label>
                     <input
-                        type="hidden"
-                        id="ExtendedChannelState"
-                        name="ExtendedChannelState"
-                        value="false" />
+                        type="text"
+                        name="ExtendedChannel"
+                        id="ExtendedChannel" />
                 </div>
                 <div class="labelContainer">
-                    <label for="UseChannelLimit"
-                        >Использование списка разрешённых каналов
+                    <label for="UseChannelLimit">UseChannelLimit</label>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        name="UseChannelLimit"
+                        id="UseChannelLimit" />
+                </div>
+                <div class="labelContainer">
+                    <label for="ChannelLimit" id="ChannelLimitLabel"
+                        >ChannelLimit
                     </label>
                 </div>
                 <div>
-                    <label class="switch">
-                        <input
-                            type="checkbox"
-                            id="UseChannelLimit"
-                            onclick="updateUseChannelLimitState()" />
-                        <span class="slider round"></span>
-                    </label>
-                    <input
-                        type="hidden"
-                        id="UseChannelLimitState"
-                        name="UseChannelLimitState"
-                        value="false" />
+                    <input type="text" name="Channels" id="Channels" />
                 </div>
-                <div class="labelContainer">
-                    <label
-                        for="ChannelLimit"
-                        id="ChannelLimitLabel"
-                        style="display: none"
-                        >Список разрешённых каналов
-                    </label>
-                </div>
-                <div class="select-all-channels">
-                    <input
-                        type="checkbox"
-                        id="SelectAllChannelSwitch"
-                        name="SelectAllChannelSwitch"
-                        style="display: none"
-                        onclick="SelectAllChannels()" />
-                    <label
-                        for="SelectAllChannelSwitch"
-                        id="SelectAllChannelLabel"
-                        style="display: none"
-                        >Выделить все
-                    </label>
-                </div>
-                <div
-                    class="ChannelCheckboxGroup"
-                    id="ChannelCheckboxGroup"></div>
                 <div class="form-group">
                     <button class="btn accept-settings" type="submit">
-                        Применить
+                        Перейти
                     </button>
                 </div>
             </form>
